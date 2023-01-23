@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-var testStep : ElevatorStep = ElevatorStep(
-    id: 0,
-    type: ElevatorStep.ElevatorStepType.Top,
-    userInput: "My App is no good."
-)
-
-
 struct ElevatorStepView: View {
     var elevatorStep: ElevatorStep
     var stepType: ElevatorStep.ElevatorStepType
@@ -25,19 +18,21 @@ struct ElevatorStepView: View {
         input = fromStep.userInput
     }
 
-    func getTitle(stepType: ElevatorStep.ElevatorStepType) -> String {
+    func getPrompt(stepType: ElevatorStep.ElevatorStepType) -> String {
         switch stepType {
         case ElevatorStep.ElevatorStepType.Top:
-            return "Elevator Top"
+            return "Here's a prompt for you: \"What does it mean to me that...?\""
         case ElevatorStep.ElevatorStepType.Level:
-            return "Elevator Level"
-        case ElevatorStep.ElevatorStepType.Bottom:
-            return "Elevator Bottom"
+            return "What does it mean to you that"
+        case ElevatorStep.ElevatorStepType.BottomInit:
+            return "Is it true that"
+        case ElevatorStep.ElevatorStepType.BottomFinal:
+            return "In a world of infinite possibilities, what could you choose to believe or do differently from thinking"
         }
     }
     var body: some View {
         VStack {
-            Text(getTitle(stepType: stepType))
+            Text(getPrompt(stepType: stepType))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.gray.opacity(0.1))
             Text(input)
@@ -48,7 +43,9 @@ struct ElevatorStepView: View {
 }
 
 struct ElevatorStepView_Previews: PreviewProvider {
+    static var elevators = ModelData().elevators
+    static var elevatorStepTest: ElevatorStep  = elevators[0].levels[0]
     static var previews: some View {
-        ElevatorStepView(fromStep: testStep)
+        ElevatorStepView(fromStep: elevatorStepTest)
     }
 }

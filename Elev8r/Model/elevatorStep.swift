@@ -11,7 +11,8 @@ struct ElevatorStep: Codable, Identifiable {
     enum ElevatorStepType: Int, Codable {
         case Top
         case Level
-        case Bottom
+        case BottomInit
+        case BottomFinal
     }
     var id: UInt = 0
     var type: ElevatorStepType = ElevatorStepType.Top

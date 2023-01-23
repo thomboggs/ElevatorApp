@@ -1,0 +1,24 @@
+[
+    {
+        "id": 0,
+        "levels": [
+            {
+                "id": 0,
+                "type": 0,
+                "userInput": "My app is no good. No one will like my app."
+            },
+            {
+                "id": 1,
+                "type": 1,
+                "userInput": "Elevator Level 1"
+            },
+            {
+                "id": 2,
+                "type": 1,
+                "userInput": "Elevator Level 2"
+            },
+        ],
+        "complete": true,
+        "stepCount": 2,
+    }
+]

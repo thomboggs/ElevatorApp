@@ -25,6 +25,8 @@
 		57F01814297DD9970065B50E /* ElevatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01812297DD9970065B50E /* ElevatorView.swift */; };
 		57F01819297DED050065B50E /* ElevatorStepEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01818297DED050065B50E /* ElevatorStepEntryView.swift */; };
 		57F0181A297DED050065B50E /* ElevatorStepEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01818297DED050065B50E /* ElevatorStepEntryView.swift */; };
+		57F0182B297E22E80065B50E /* JSON scratch in Resources */ = {isa = PBXBuildFile; fileRef = 57F0182A297E22E80065B50E /* JSON scratch */; };
+		57F0182C297E22E80065B50E /* JSON scratch in Resources */ = {isa = PBXBuildFile; fileRef = 57F0182A297E22E80065B50E /* JSON scratch */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		57F0180C297DCC260065B50E /* elevatorData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = elevatorData.json; sourceTree = "<group>"; };
 		57F01812297DD9970065B50E /* ElevatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorView.swift; sourceTree = "<group>"; };
 		57F01818297DED050065B50E /* ElevatorStepEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorStepEntryView.swift; sourceTree = "<group>"; };
+		57F0182A297E22E80065B50E /* JSON scratch */ = {isa = PBXFileReference; lastKnownFileType = text; path = "JSON scratch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 		57F017BD297DC0F90065B50E = {
 			isa = PBXGroup;
 			children = (
+				57F0182A297E22E80065B50E /* JSON scratch */,
 				57F017C8297DC0F90065B50E /* Elev8r */,
 				57F017DA297DC1050065B50E /* Elev8rTests */,
 				57F017E5297DC1050065B50E /* Elev8rUITests */,
@@ -114,13 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				57F017C9297DC0F90065B50E /* Elev8rApp.swift */,
-				57F017CB297DC0F90065B50E /* ContentView.swift */,
-				57F017F7297DC4C00065B50E /* elevatorStep.swift */,
-				57F017FD297DC7300065B50E /* ElevatorStepView.swift */,
-				57F01818297DED050065B50E /* ElevatorStepEntryView.swift */,
-				57F01812297DD9970065B50E /* ElevatorView.swift */,
-				57F01806297DC8B60065B50E /* ModelData.swift */,
-				57F0180C297DCC260065B50E /* elevatorData.json */,
+				57F01820297E1A7A0065B50E /* Resources */,
+				57F0181E297E1A3C0065B50E /* Views */,
+				57F0181F297E1A5F0065B50E /* Model */,
 				57F017CD297DC1050065B50E /* Assets.xcassets */,
 				57F017D2297DC1050065B50E /* Info.plist */,
 				57F017CF297DC1050065B50E /* Preview Content */,
@@ -152,6 +152,34 @@
 				57F017E8297DC1050065B50E /* Info.plist */,
 			);
 			path = Elev8rUITests;
+			sourceTree = "<group>";
+		};
+		57F0181E297E1A3C0065B50E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57F017CB297DC0F90065B50E /* ContentView.swift */,
+				57F017FD297DC7300065B50E /* ElevatorStepView.swift */,
+				57F01818297DED050065B50E /* ElevatorStepEntryView.swift */,
+				57F01812297DD9970065B50E /* ElevatorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57F0181F297E1A5F0065B50E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57F01806297DC8B60065B50E /* ModelData.swift */,
+				57F017F7297DC4C00065B50E /* elevatorStep.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		57F01820297E1A7A0065B50E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57F0180C297DCC260065B50E /* elevatorData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +287,7 @@
 			files = (
 				57F0180D297DCC260065B50E /* elevatorData.json in Resources */,
 				57F017D1297DC1050065B50E /* Preview Assets.xcassets in Resources */,
+				57F0182B297E22E80065B50E /* JSON scratch in Resources */,
 				57F017CE297DC1050065B50E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F0182C297E22E80065B50E /* JSON scratch in Resources */,
 				57F0180E297DCC260065B50E /* elevatorData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
