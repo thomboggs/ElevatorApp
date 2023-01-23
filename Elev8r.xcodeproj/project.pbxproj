@@ -13,6 +13,18 @@
 		57F017D1297DC1050065B50E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F017D0297DC1050065B50E /* Preview Assets.xcassets */; };
 		57F017DC297DC1050065B50E /* Elev8rTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017DB297DC1050065B50E /* Elev8rTests.swift */; };
 		57F017E7297DC1050065B50E /* Elev8rUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017E6297DC1050065B50E /* Elev8rUITests.swift */; };
+		57F017F8297DC4C00065B50E /* elevatorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017F7297DC4C00065B50E /* elevatorStep.swift */; };
+		57F017F9297DC4C00065B50E /* elevatorStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017F7297DC4C00065B50E /* elevatorStep.swift */; };
+		57F017FE297DC7300065B50E /* ElevatorStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017FD297DC7300065B50E /* ElevatorStepView.swift */; };
+		57F017FF297DC7300065B50E /* ElevatorStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017FD297DC7300065B50E /* ElevatorStepView.swift */; };
+		57F01807297DC8B60065B50E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01806297DC8B60065B50E /* ModelData.swift */; };
+		57F01808297DC8B60065B50E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01806297DC8B60065B50E /* ModelData.swift */; };
+		57F0180D297DCC260065B50E /* elevatorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F0180C297DCC260065B50E /* elevatorData.json */; };
+		57F0180E297DCC260065B50E /* elevatorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F0180C297DCC260065B50E /* elevatorData.json */; };
+		57F01813297DD9970065B50E /* ElevatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01812297DD9970065B50E /* ElevatorView.swift */; };
+		57F01814297DD9970065B50E /* ElevatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01812297DD9970065B50E /* ElevatorView.swift */; };
+		57F01819297DED050065B50E /* ElevatorStepEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01818297DED050065B50E /* ElevatorStepEntryView.swift */; };
+		57F0181A297DED050065B50E /* ElevatorStepEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F01818297DED050065B50E /* ElevatorStepEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +57,12 @@
 		57F017E2297DC1050065B50E /* Elev8rUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Elev8rUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F017E6297DC1050065B50E /* Elev8rUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elev8rUITests.swift; sourceTree = "<group>"; };
 		57F017E8297DC1050065B50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57F017F7297DC4C00065B50E /* elevatorStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = elevatorStep.swift; sourceTree = "<group>"; };
+		57F017FD297DC7300065B50E /* ElevatorStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorStepView.swift; sourceTree = "<group>"; };
+		57F01806297DC8B60065B50E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		57F0180C297DCC260065B50E /* elevatorData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = elevatorData.json; sourceTree = "<group>"; };
+		57F01812297DD9970065B50E /* ElevatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorView.swift; sourceTree = "<group>"; };
+		57F01818297DED050065B50E /* ElevatorStepEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorStepEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,12 @@
 			children = (
 				57F017C9297DC0F90065B50E /* Elev8rApp.swift */,
 				57F017CB297DC0F90065B50E /* ContentView.swift */,
+				57F017F7297DC4C00065B50E /* elevatorStep.swift */,
+				57F017FD297DC7300065B50E /* ElevatorStepView.swift */,
+				57F01818297DED050065B50E /* ElevatorStepEntryView.swift */,
+				57F01812297DD9970065B50E /* ElevatorView.swift */,
+				57F01806297DC8B60065B50E /* ModelData.swift */,
+				57F0180C297DCC260065B50E /* elevatorData.json */,
 				57F017CD297DC1050065B50E /* Assets.xcassets */,
 				57F017D2297DC1050065B50E /* Info.plist */,
 				57F017CF297DC1050065B50E /* Preview Content */,
@@ -233,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F0180D297DCC260065B50E /* elevatorData.json in Resources */,
 				57F017D1297DC1050065B50E /* Preview Assets.xcassets in Resources */,
 				57F017CE297DC1050065B50E /* Assets.xcassets in Resources */,
 			);
@@ -242,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F0180E297DCC260065B50E /* elevatorData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F01813297DD9970065B50E /* ElevatorView.swift in Sources */,
+				57F01819297DED050065B50E /* ElevatorStepEntryView.swift in Sources */,
 				57F017CC297DC0F90065B50E /* ContentView.swift in Sources */,
+				57F017F8297DC4C00065B50E /* elevatorStep.swift in Sources */,
+				57F01807297DC8B60065B50E /* ModelData.swift in Sources */,
+				57F017FE297DC7300065B50E /* ElevatorStepView.swift in Sources */,
 				57F017CA297DC0F90065B50E /* Elev8rApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +300,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F017DC297DC1050065B50E /* Elev8rTests.swift in Sources */,
+				57F01808297DC8B60065B50E /* ModelData.swift in Sources */,
+				57F017F9297DC4C00065B50E /* elevatorStep.swift in Sources */,
+				57F0181A297DED050065B50E /* ElevatorStepEntryView.swift in Sources */,
+				57F017FF297DC7300065B50E /* ElevatorStepView.swift in Sources */,
+				57F01814297DD9970065B50E /* ElevatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "top": [
+            type: "ElevatorStepType.Top",
+            userInput: ""
+        ],
+        "levels": {[]},
+        "bottom": []
+    },
+]
