@@ -3,23 +3,19 @@
         "id": 0,
         "messages": [
             {
-                "id": 0,
                 "source": 0,
                 "text": "\"What does it mean to you that...\""
             },
             {
-                "id": 1,
                 "source": 1,
                 "text": "My app is no good. No one will like my app."
             },
             {
-                "id": 2,
                 "source": 0,
                 "text": "What does it mean to you that \"My app is no good. No one will like my app.\"?"
             },
         ],
         "complete": false,
-        "state": 1,
-        "stepCount": 2,
+        "state": 0,
     }
 ]

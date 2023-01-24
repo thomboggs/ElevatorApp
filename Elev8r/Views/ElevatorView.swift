@@ -11,20 +11,21 @@ import SwiftUI
 struct ElevatorView: View {
     @EnvironmentObject var thread: ActiveElevator
     @State var input: String = ""
+    @Namespace var bottomID
     
     func getAppMessage(inputString: String = "") -> String {
         let basicPrefix: String = "What does it mean to you that"
         
         switch thread.elevator.state {
-        case Elevator.ElevatorStatus.Top:
-            return "\"" + basicPrefix + "...\""
         case Elevator.ElevatorStatus.Level:
             return basicPrefix + " \"" + inputString + "\" ?"
         case Elevator.ElevatorStatus.BottomInit:
+            thread.elevator.state = Elevator.ElevatorStatus.BottomFinal
             return "Is it true that \"" + inputString + "\" ?"
         case Elevator.ElevatorStatus.BottomFinal:
+            thread.elevator.state = Elevator.ElevatorStatus.Complete
             return "In a world of infinite possibilites... \"" + thread.elevator.messages[1].text + "\" ?"
-        default:
+        case Elevator.ElevatorStatus.Complete:
             return ""
         }
     }
@@ -39,8 +40,6 @@ struct ElevatorView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
                 .padding(.bottom, 5.0)
-                
-                
         }
         
         return Text(message.text)
@@ -51,55 +50,89 @@ struct ElevatorView: View {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .multilineTextAlignment(.trailing)
             .padding(.bottom, 5.0)
-            
     }
     
     func onSendPressed() {
-        thread.elevator.stepCount += 1
         // create new ElevatorMessage with:
         // - text = $input
         // - id = stepcount+1 (Don't forget to increment step count)
         // - Push to back of the messages array
         var newMessage = ElevatorMessage()
-        newMessage.id = thread.elevator.stepCount
         newMessage.text = $input.wrappedValue
         newMessage.source = ElevatorMessage.MessageSource.User
-        
         thread.elevator.messages.append(newMessage)
         
         // Create new elvator message from app
         // - Current state of the app determines the prefix.
         // - $input is what is quoted
         // - push to back of the message array
-        thread.elevator.stepCount += 1
         var appResponse = ElevatorMessage()
-        appResponse.id = thread.elevator.stepCount
         appResponse.source = ElevatorMessage.MessageSource.App
         appResponse.text = getAppMessage(inputString: $input.wrappedValue)
-        
         thread.elevator.messages.append(appResponse)
         
         // Set $input back to default
-        // redraw? Is this necessary?
         $input.wrappedValue = ""
     }
     
     func onBottomPressed() {
+        // State Changes to first bottom
+        thread.elevator.state = Elevator.ElevatorStatus.BottomInit
+        // Display message using most recent
         
+        if ($input.wrappedValue != "") {
+            var newMessage = ElevatorMessage()
+            newMessage.text = $input.wrappedValue
+            newMessage.source = ElevatorMessage.MessageSource.User
+            thread.elevator.messages.append(newMessage)
+        }
+        
+        var appResponse = ElevatorMessage()
+        appResponse.source = ElevatorMessage.MessageSource.App
+        appResponse.text = getAppMessage(inputString: $input.wrappedValue)
+        thread.elevator.messages.append(appResponse)
+        
+        $input.wrappedValue = ""
+        
+    }
+    
+    func onBackButtonPressed() {
+        
+    }
+    
+    func showBottomButton() -> Bool {
+        return thread.elevator.state == Elevator.ElevatorStatus.Level
     }
     
     var body: some View {
         VStack {
-            Button("I'm at the Bottom", action: onBottomPressed)
-                .padding()
-                .background(Color.blue.opacity(0.2))
-                .clipShape(Capsule())
-        
-            ScrollView {
-                ForEach(thread.elevator.messages) {message in
-                    displayMessage(message: message)
-                        
-                        
+            HStack {
+                Button("Back", action: onBackButtonPressed)
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .clipShape(Capsule())
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 20.0)
+                
+                if (showBottomButton()) {
+                    Button("I'm at the Bottom", action: onBottomPressed)
+                        .padding()
+                        .background(Color.blue.opacity(0.2))
+                        .clipShape(Capsule())
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.trailing, 20.0)
+                }
+            }
+            
+            ScrollViewReader { scrollView in
+                ScrollView(.vertical) {
+                    ForEach(thread.elevator.messages, id: \.self) {message in
+                        displayMessage(message: message)
+                    }
+                    .onAppear {
+                        scrollView.scrollTo(thread.elevator.messages[thread.elevator.messages.endIndex - 1])
+                    }
+                
                 }
             }
             
