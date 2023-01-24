@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct Elev8rApp: App {
     @StateObject private var modelData = ModelData()
+    @StateObject private var activeElevator = ActiveElevator()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .environmentObject(activeElevator)
         }
     }
 }

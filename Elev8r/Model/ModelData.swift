@@ -11,6 +11,10 @@ final class ModelData: ObservableObject {
     @Published var elevators: [Elevator] = load("elevatorData.json")
 }
 
+class ActiveElevator: ObservableObject {
+    @Published var elevator: Elevator = ModelData().elevators[0]
+}
+
 func load<T: Decodable>(_ filename: String) -> T {
     var data: Data
     

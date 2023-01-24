@@ -1,24 +1,25 @@
 [
     {
         "id": 0,
-        "levels": [
+        "messages": [
             {
                 "id": 0,
-                "type": 0,
-                "userInput": "My app is no good. No one will like my app."
+                "source": 0,
+                "text": "\"What does it mean to you that...\""
             },
             {
                 "id": 1,
-                "type": 1,
-                "userInput": "Elevator Level 1"
+                "source": 1,
+                "text": "My app is no good. No one will like my app."
             },
             {
                 "id": 2,
-                "type": 1,
-                "userInput": "Elevator Level 2"
+                "source": 0,
+                "text": "What does it mean to you that \"My app is no good. No one will like my app.\"?"
             },
         ],
-        "complete": true,
+        "complete": false,
+        "state": 1,
         "stepCount": 2,
     }
 ]

@@ -7,50 +7,81 @@
 
 import SwiftUI
 
-//var testTop: ElevatorStep = ElevatorStep(
-//    id: 0,
-//    type: ElevatorStep.ElevatorStepType.Top,
-//    userInput: "Elevator Bottom")
-//
-//var level1: ElevatorStep = ElevatorStep(
-//    id: 1,
-//    type: ElevatorStep.ElevatorStepType.Level,
-//    userInput: "Level1")
-//var level2: ElevatorStep = ElevatorStep(
-//    id: 2,
-//    type: ElevatorStep.ElevatorStepType.Level,
-//    userInput: "Level2")
-//
-//var testBottom: ElevatorStep = ElevatorStep(
-//    id: 3,
-//    type: ElevatorStep.ElevatorStepType.Bottom,
-//    userInput: "Elevator Bottom")
-//
-//var testLevels: [ElevatorStep] = Array(arrayLiteral: testStep, level1, level2, testBottom)
-//
-//var testElevator: Elevator =
-//    Elevator(
-//        id: 0,
-//        levels: testLevels,
-//        complete: false
-//    )
-
-//struct Button<Label> where Label : View
 
 struct ElevatorView: View {
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var thread: ActiveElevator
+    @State var input: String = ""
     
-    func getStepEntry(elevator: Elevator) -> ElevatorStepEntryView?	 {
-        if (!elevator.complete) {
-            var step: ElevatorStep = ElevatorStep()
-            step.id = elevator.stepCount + 1
-            return Optional.some(ElevatorStepEntryView(fromStep: step))
+    func getAppMessage(inputString: String = "") -> String {
+        let basicPrefix: String = "What does it mean to you that"
+        
+        switch thread.elevator.state {
+        case Elevator.ElevatorStatus.Top:
+            return "\"" + basicPrefix + "...\""
+        case Elevator.ElevatorStatus.Level:
+            return basicPrefix + " \"" + inputString + "\" ?"
+        case Elevator.ElevatorStatus.BottomInit:
+            return "Is it true that \"" + inputString + "\" ?"
+        case Elevator.ElevatorStatus.BottomFinal:
+            return "In a world of infinite possibilites... \"" + thread.elevator.messages[1].text + "\" ?"
+        default:
+            return ""
         }
-        return Optional.none
+    }
+    
+    func displayMessage(message: ElevatorMessage) -> some View {
+        if (message.source == ElevatorMessage.MessageSource.App) {
+            return Text(message.text)
+                .padding([.leading, .trailing], 20.0)
+                .background(Color.green.opacity(0.2))
+                .clipShape(Capsule())
+                .padding(.trailing, 25.0)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.leading)
+                .padding(.bottom, 5.0)
+                
+                
+        }
+        
+        return Text(message.text)
+            .padding([.leading, .trailing], 20.0)
+            .background(Color.blue.opacity(0.2))
+            .clipShape(Capsule())
+            .padding(.leading, 25.0)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .multilineTextAlignment(.trailing)
+            .padding(.bottom, 5.0)
+            
     }
     
     func onSendPressed() {
+        thread.elevator.stepCount += 1
+        // create new ElevatorMessage with:
+        // - text = $input
+        // - id = stepcount+1 (Don't forget to increment step count)
+        // - Push to back of the messages array
+        var newMessage = ElevatorMessage()
+        newMessage.id = thread.elevator.stepCount
+        newMessage.text = $input.wrappedValue
+        newMessage.source = ElevatorMessage.MessageSource.User
         
+        thread.elevator.messages.append(newMessage)
+        
+        // Create new elvator message from app
+        // - Current state of the app determines the prefix.
+        // - $input is what is quoted
+        // - push to back of the message array
+        thread.elevator.stepCount += 1
+        var appResponse = ElevatorMessage()
+        appResponse.id = thread.elevator.stepCount
+        appResponse.source = ElevatorMessage.MessageSource.App
+        appResponse.text = getAppMessage(inputString: $input.wrappedValue)
+        
+        thread.elevator.messages.append(appResponse)
+        
+        // Set $input back to default
+        // redraw? Is this necessary?
+        $input.wrappedValue = ""
     }
     
     func onBottomPressed() {
@@ -58,25 +89,35 @@ struct ElevatorView: View {
     }
     
     var body: some View {
-        var elevators: [Elevator] = modelData.elevators
-        
         VStack {
             Button("I'm at the Bottom", action: onBottomPressed)
+                .padding()
+                .background(Color.blue.opacity(0.2))
+                .clipShape(Capsule())
         
-            List(elevators[0].levels) { step in
-                ElevatorStepView(fromStep: step)
-                    .frame(maxWidth: .infinity)
+            ScrollView {
+                ForEach(thread.elevator.messages) {message in
+                    displayMessage(message: message)
+                        
+                        
+                }
             }
-            .moveDisabled(true)
-            .frame(maxWidth: .infinity)
             
             Spacer()
             
-            getStepEntry(elevator: elevators[0])
+            TextField("...", text: $input)
+                .multilineTextAlignment(.trailing)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .background(Color.gray.opacity(0.1))
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                
 
             Button("Send", action: onSendPressed)
-                .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding()
+                .background(Color.blue.opacity(0.1))
+                .clipShape(Capsule())
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }
@@ -84,7 +125,7 @@ struct ElevatorView: View {
 struct ElevatorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ElevatorView().environmentObject(ModelData())
+            ElevatorView().environmentObject(ActiveElevator())
         }
         
     }
