@@ -11,10 +11,11 @@ import SwiftUI
 struct ElevatorView: View {
     @EnvironmentObject var thread: ActiveElevator
     @State var input: String = ""
-    @Namespace var bottomID
+    @State var update: Bool = false
+//    @Namespace var bottomID
     
     func getAppMessage(inputString: String = "") -> String {
-        let basicPrefix: String = "What does it mean to you that"
+        let basicPrefix: String = "What does it mean to you if"
         
         switch thread.elevator.state {
         case Elevator.ElevatorStatus.Level:
@@ -73,6 +74,8 @@ struct ElevatorView: View {
         
         // Set $input back to default
         $input.wrappedValue = ""
+        
+        update.toggle()
     }
     
     func onBottomPressed() {
@@ -94,6 +97,7 @@ struct ElevatorView: View {
         
         $input.wrappedValue = ""
         
+        update.toggle()
     }
     
     func onBackButtonPressed() {
@@ -126,14 +130,23 @@ struct ElevatorView: View {
             
             ScrollViewReader { scrollView in
                 ScrollView(.vertical) {
-                    ForEach(thread.elevator.messages, id: \.self) {message in
-                        displayMessage(message: message)
+                    VStack {
+                        ForEach(thread.elevator.messages, id: \.self) {message in
+                            displayMessage(message: message)
+                        }
+                    }.id("ChatScrollView")
+                } .onChange(of: update) { _ in
+                    withAnimation {
+                        scrollView.scrollTo("ChatScrollView", anchor: .bottom)
                     }
-                    .onAppear {
-                        scrollView.scrollTo(thread.elevator.messages[thread.elevator.messages.endIndex - 1])
-                    }
-                
                 }
+//                    .onAppear {
+//                        scrollView.scrollTo(thread.elevator.messages[thread.elevator.messages.endIndex - 1])
+//                    }
+//                }
+//                .onChange(of: update) { _ in
+//                    scrollView.scrollTo(thread.elevator.messages[thread.elevator.messages.endIndex - 1])
+//                }
             }
             
             Spacer()
