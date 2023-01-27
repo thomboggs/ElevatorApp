@@ -16,14 +16,14 @@ struct ElevatorMessage: Codable, Hashable {
     var text: String = ""
 }
 
-struct Elevator: Codable, Identifiable {
+struct Elevator: Codable, Identifiable, Hashable {
     enum ElevatorStatus: Int, Codable {
         case Level
         case BottomInit
         case BottomFinal
         case Complete
     }
-    let id = UUID()
+    var id = UUID()
     var messages: [ElevatorMessage]
     var state: ElevatorStatus
 //    var tags: [String]

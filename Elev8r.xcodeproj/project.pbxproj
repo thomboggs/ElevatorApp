@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2AA93C29836A0300494662 /* ElevatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA93B29836A0300494662 /* ElevatorListView.swift */; };
+		4C2AA93E29836F3D00494662 /* ElevatorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA93D29836F3D00494662 /* ElevatorRowView.swift */; };
 		57F017CA297DC0F90065B50E /* Elev8rApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017C9297DC0F90065B50E /* Elev8rApp.swift */; };
 		57F017CC297DC0F90065B50E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F017CB297DC0F90065B50E /* ContentView.swift */; };
 		57F017CE297DC1050065B50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F017CD297DC1050065B50E /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C2AA93B29836A0300494662 /* ElevatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorListView.swift; sourceTree = "<group>"; };
+		4C2AA93D29836F3D00494662 /* ElevatorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorRowView.swift; sourceTree = "<group>"; };
 		57F017C6297DC0F90065B50E /* Elev8r.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elev8r.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F017C9297DC0F90065B50E /* Elev8rApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elev8rApp.swift; sourceTree = "<group>"; };
 		57F017CB297DC0F90065B50E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 		57F0181E297E1A3C0065B50E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C2AA93D29836F3D00494662 /* ElevatorRowView.swift */,
+				4C2AA93B29836A0300494662 /* ElevatorListView.swift */,
 				57F017CB297DC0F90065B50E /* ContentView.swift */,
 				57F01812297DD9970065B50E /* ElevatorView.swift */,
 			);
@@ -301,10 +307,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2AA93C29836A0300494662 /* ElevatorListView.swift in Sources */,
 				57F01813297DD9970065B50E /* ElevatorView.swift in Sources */,
 				57F017CC297DC0F90065B50E /* ContentView.swift in Sources */,
 				57F017F8297DC4C00065B50E /* elevatorData.swift in Sources */,
 				57F01807297DC8B60065B50E /* ModelData.swift in Sources */,
+				4C2AA93E29836F3D00494662 /* ElevatorRowView.swift in Sources */,
 				57F017CA297DC0F90065B50E /* Elev8rApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

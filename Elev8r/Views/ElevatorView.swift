@@ -54,34 +54,23 @@ struct ElevatorView: View {
     }
     
     func onSendPressed() {
-        // create new ElevatorMessage with:
-        // - text = $input
-        // - id = stepcount+1 (Don't forget to increment step count)
-        // - Push to back of the messages array
         var newMessage = ElevatorMessage()
         newMessage.text = $input.wrappedValue
         newMessage.source = ElevatorMessage.MessageSource.User
         thread.elevator.messages.append(newMessage)
         
-        // Create new elvator message from app
-        // - Current state of the app determines the prefix.
-        // - $input is what is quoted
-        // - push to back of the message array
         var appResponse = ElevatorMessage()
         appResponse.source = ElevatorMessage.MessageSource.App
         appResponse.text = getAppMessage(inputString: $input.wrappedValue)
         thread.elevator.messages.append(appResponse)
         
-        // Set $input back to default
         $input.wrappedValue = ""
         
         update.toggle()
     }
     
     func onBottomPressed() {
-        // State Changes to first bottom
         thread.elevator.state = Elevator.ElevatorStatus.BottomInit
-        // Display message using most recent
         
         if ($input.wrappedValue != "") {
             var newMessage = ElevatorMessage()
